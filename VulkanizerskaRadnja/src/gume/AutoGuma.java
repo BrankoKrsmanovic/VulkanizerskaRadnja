@@ -1,17 +1,17 @@
 package gume;
 
 /**
+ * Klasa koja opisuje automobilsku gumu atributima
+ * 
+ * <ul>
+ * <li>markaModel</li>
+ * <li>precnik</li>
+ * <li>sirina</li>
+ * <li>visina</li>
+ * </ul>
  * 
  * @author BrankoKrsmanovic
- * @version 1.0.0 Klasa koja opisuje automobilsku gumu atributima
- * 
- *          <ul>
- *          <li>markaModel</li>
- *          <li>precnik</li>
- *          <li>sirina</li>
- *          <li>visina</li>
- *
- *          </ul>
+ * @version 1.0.0
  */
 
 public class AutoGuma {
@@ -19,43 +19,46 @@ public class AutoGuma {
 	/**
 	 * Atribut koji prikazuje marku/model gume
 	 */
-	
+
 	private String markaModel = null;
 
 	/**
 	 * Atribut koji prikazuje precnik gume
 	 */
-	
+
 	private int precnik = 0;
 
 	/**
 	 * Atribut koji prikazuje sirinu gume
 	 */
-	
+
 	private int sirina = 0;
 
 	/**
 	 * Atribut koji prikazuje visinu gume
 	 */
-	
+
 	private int visina = 0;
 
 	/**
 	 * Metoda koja vraca marku/model
 	 * 
-	 * @return naziv marke/modela
+	 * @return markaModel kao String
 	 */
-	
+
 	public String getMarkaModel() {
 		return markaModel;
 	}
 
 	/**
-	 * Metoda kojom se stavlja novu vrednost marke/modela
+	 * Metoda koja stavlja novu vrednost marke/modela
+	 * 
+	 * @param markaModel
+	 *            novi naziv za atribut markaModel
 	 * 
 	 * @throws java.lang.RuntimeException
-	 *             ako se unese nedozvoljena vrednost
-	 * @param marka/model
+	 *             unet null ili String kraci od 3 karaktera za naziv atributa
+	 *             markaModel
 	 */
 
 	public void setMarkaModel(String markaModel) {
@@ -65,11 +68,11 @@ public class AutoGuma {
 	}
 
 	/**
-	 * Metoda koja vraca precnik
+	 * Metoda koja vraca precnik gume
 	 * 
 	 * @return precnik
 	 */
-	
+
 	public int getPrecnik() {
 		return precnik;
 	}
@@ -77,11 +80,13 @@ public class AutoGuma {
 	/**
 	 * Metoda kojom se stavlja nova vrednost precnika
 	 * 
-	 * @throws java.lang.RuntimeException
-	 *             ako se unese nedozvoljena vrednost
 	 * @param precnik
+	 *            nova vrednost atributa precnik
+	 * 
+	 * @throws java.lang.RuntimeException
+	 *             ako je uneta vrednost precnika manja od 13 ili veca od 23
 	 */
-	
+
 	public void setPrecnik(int precnik) {
 		if (precnik < 13 || precnik > 22)
 			throw new RuntimeException("Precnik van opsega");
@@ -89,11 +94,11 @@ public class AutoGuma {
 	}
 
 	/**
-	 * Metoda koja vraca sirinu
+	 * Metoda koja vraca sirinu gume
 	 * 
 	 * @return sirina
 	 */
-	
+
 	public int getSirina() {
 		return sirina;
 	}
@@ -101,11 +106,13 @@ public class AutoGuma {
 	/**
 	 * Metoda kojom se stavlja nova vrednost sirine
 	 * 
-	 * @throws java.lang.RuntimeException
-	 *             ako se unese nedozvoljena vrednost
 	 * @param sirina
+	 *            nova vrednost atributa sirina
+	 * 
+	 * @throws java.lang.RuntimeException
+	 *             ako se unese sirina manja od 135 ili veca od 355
 	 */
-	
+
 	public void setSirina(int sirina) {
 		if (sirina < 135 || sirina > 355)
 			throw new RuntimeException("Sirina van opsega");
@@ -113,11 +120,11 @@ public class AutoGuma {
 	}
 
 	/**
-	 * Metoda koja vraca visinu
+	 * Metoda koja vraca visinu gume
 	 * 
 	 * @return visina
 	 */
-	
+
 	public int getVisina() {
 		return visina;
 	}
@@ -125,11 +132,13 @@ public class AutoGuma {
 	/**
 	 * Metoda kojom se stavlja nova vrednost visine
 	 * 
-	 * @throws java.lang.RuntimeException
-	 *             ako se unese nedozvoljena vrednost
 	 * @param visina
+	 *            nova vrednost atributa sirina
+	 * 
+	 * @throws java.lang.RuntimeException
+	 *             ako se unese visina manja od 25 ili veca od 95
 	 */
-	
+
 	public void setVisina(int visina) {
 		if (visina < 25 || visina > 95)
 			throw new RuntimeException("Visina van opsega");
@@ -141,7 +150,7 @@ public class AutoGuma {
 	 * 
 	 * @return string svih atributa
 	 */
-	
+
 	@Override
 	public String toString() {
 		return "AutoGuma [markaModel=" + markaModel + ", precnik=" + precnik + ", sirina=" + sirina + ", visina="
@@ -150,30 +159,32 @@ public class AutoGuma {
 
 	/**
 	 * Metoda koja poredi dva objekta klase AutoGuma
-	 * @return true/false
+	 * 
+	 * @return true ako su atributi: markaModel, precnik, sirina i visina obe
+	 *         AutoGume jednaki, u suprotnom vraca false
 	 */
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
-		return true;
+			return true;
 		if (obj == null)
-		return false;
+			return false;
 		if (getClass() != obj.getClass())
-		return false;
+			return false;
 		AutoGuma other = (AutoGuma) obj;
 		if (markaModel == null) {
-		if (other.markaModel != null)
-		return false;
-		
+			if (other.markaModel != null)
+				return false;
+
 		} else if (!markaModel.equals(other.markaModel))
-		return false;
+			return false;
 		if (precnik != other.precnik)
-		return false;
+			return false;
 		if (sirina != other.sirina)
-		return false;
+			return false;
 		if (visina != other.visina)
-		return false;
+			return false;
 		return true;
 	}
 
